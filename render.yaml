@@ -1,10 +1,10 @@
 services:
-  - type: web
+  - type: static_site
     name: gem-web
     runtime: node
     plan: free
     buildCommand: npm install && npm run build
-    startCommand: npx serve out -l 3000
+    staticPublishPath: out
     envVars:
       - key: NODE_VERSION
         value: 22.x
