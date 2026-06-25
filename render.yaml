@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: gem-web
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx serve out -l 3000
+    envVars:
+      - key: NODE_VERSION
+        value: 22.x

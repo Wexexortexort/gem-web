@@ -1,26 +1,161 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #ffffff;
+  --color-foreground: #333333;
+  --font-serif-jp: var(--font-noto-serif-jp), "Noto Serif JP", serif;
+  --font-libre: var(--font-libre-baskerville), "Libre Baskerville", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base reset matching the original site */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.4vw;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff;
+}
+
+@media (min-width: 568px) {
+  body {
+    font-size: 2.2vw;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.8vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* Common utilities */
+.font-libre {
+  font-family: var(--font-libre-baskerville), "Libre Baskerville", serif;
+}
+
+.font-serif-jp {
+  font-family: var(--font-noto-serif-jp), "Noto Serif JP", serif;
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slick slider customization */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+/* Utility for clip-path reveal animation */
+.clip-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s ease;
+}
+
+.clip-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-in forwards;
+}
+
+/* Opening animation */
+@keyframes openingReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes openingBlurOut {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    filter: blur(8px);
+    opacity: 0;
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gem-web",
+      "cwd": "E:/CCWorkSpace/20260625/gem-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "autoPort": false
+    }
+  ]
+}
